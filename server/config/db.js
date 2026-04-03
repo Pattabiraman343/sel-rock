@@ -1,11 +1,17 @@
-import { connect } from "mongoose";
+import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    await connect(process.env.MONGO_URI);
+    console.log("ENV CHECK 👉", process.env.MONGO_URI); // 🔥 MUST
+
+    if (!process.env.MONGO_URI) {
+      throw new Error("MONGO_URI is missing ❌");
+    }
+
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("MongoDB Connected ✅");
   } catch (error) {
-    console.error("DB Error:", error.message);
+    console.error("DB ERROR ❌:", error.message);
     process.exit(1);
   }
 };

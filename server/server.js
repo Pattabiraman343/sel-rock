@@ -14,6 +14,9 @@ app.use(cors({
   methods: ["GET", "POST", "PATCH", "DELETE"],
 }));
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("API is running 🚀");
+});
 app.use("/api/leads", leadRoutes);
 
 connectDB();
