@@ -33,7 +33,7 @@ export default function LeadForm() {
     }
 
     try {
-      await axios.post("https://seller-rocket-1.onrender.com/api/leads", form);
+      await axios.post("https://sel-rock.onrender.com/api/leads", form);
             setSuccess("✅ Lead submitted successfully!");
       setForm({
         name: "",
